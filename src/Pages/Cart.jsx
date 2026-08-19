@@ -1,6 +1,6 @@
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
-import Breadcrumb from "../Components/Breadcrumb/Breadcrumb";
+import Breadcrumb from "../Components/BreadCrumb/BreadCrumb.jsx";
 import CartItem from "../Components/CartItem/CartItem";
 import OrderSummary from "../Components/OrderSummary/OrderSummary";
 import CartEmpty from "../Components/CartEmpty/CartEmpty";

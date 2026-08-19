@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import Footer from "../Components/Footer/Footer";
-import Breadcrumb from "../Components/Breadcrumb/Breadcrumb";
+import Breadcrumb from "../Components/BreadCrumb/BreadCrumb.jsx";
 import CategorySidebar from "../Components/CategorySidebar/CategorySidebar";
 import ProductCart from "../Components/ProductCart/ProductCart";
 import Newsletter from "../Components/NewsLetter/NewsLetter.jsx";
