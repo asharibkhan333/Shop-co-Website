@@ -1,0 +1,121 @@
+.checkout-summary {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.checkout-summary h2 {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 18px;
+  color: #000;
+}
+
+.checkout-summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 360px;
+  overflow-y: auto;
+  margin-bottom: 16px;
+}
+
+.checkout-summary-item {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.checkout-summary-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.checkout-summary-item-media {
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  background: #f0eeed;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.checkout-summary-item-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.checkout-summary-item-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.checkout-summary-item-name {
+  margin: 0 0 3px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.checkout-summary-item-meta {
+  margin: 0;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.4;
+}
+
+.checkout-summary-item-calc {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.checkout-summary-item-total {
+  font-size: 14px;
+  font-weight: 700;
+  color: #000;
+  white-space: nowrap;
+  align-self: flex-start;
+}
+
+.checkout-summary-divider {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  margin: 4px 0 14px;
+}
+
+.checkout-summary-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 12px;
+}
+
+.checkout-summary-row span:last-child {
+  color: #000;
+  font-weight: 500;
+}
+
+.checkout-summary-discount {
+  color: #ff3333 !important;
+}
+
+.checkout-summary-total {
+  margin-bottom: 0;
+}
+
+.checkout-summary-total span {
+  font-size: 19px !important;
+  font-weight: 700 !important;
+  color: #000 !important;
+}
+
+@media (max-width: 600px) {
+  .checkout-summary {
+    padding: 18px;
+    border-radius: 16px;
+  }
+}

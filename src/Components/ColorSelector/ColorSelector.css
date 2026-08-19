@@ -1,0 +1,41 @@
+.cs-label {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.cs-options {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.cs-dot {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.cs-dot:hover {
+  transform: scale(1.06);
+}
+
+@media (max-width: 900px) {
+  .cs-label {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .cs-dot {
+    width: 32px;
+    height: 32px;
+  }
+}

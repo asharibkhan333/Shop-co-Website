@@ -1,0 +1,89 @@
+.ds {
+  width: min(1240px, 100% - 32px);
+  margin: 60px auto 0;
+}
+
+.ds-panel {
+  background: #f0f0f0;
+  border-radius: 40px;
+  padding: 70px 64px;
+}
+
+.ds-title {
+  margin: 0 0 64px;
+  text-align: center;
+  font-size: 48px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.ds-selected {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ds-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 20px;
+}
+
+.ds-cell--casual {
+  grid-column: span 5;
+}
+.ds-cell--formal {
+  grid-column: span 7;
+}
+.ds-cell--party {
+  grid-column: span 7;
+}
+.ds-cell--gym {
+  grid-column: span 5;
+}
+
+.ds-cell > .dsc {
+  height: 100%;
+  min-height: 289px;
+}
+
+@media (max-width: 1024px) {
+  .ds-panel {
+    padding: 44px 28px;
+    border-radius: 24px;
+  }
+  .ds-title {
+    font-size: 34px;
+    margin-bottom: 36px;
+  }
+  .ds-cell--casual,
+  .ds-cell--formal,
+  .ds-cell--party,
+  .ds-cell--gym {
+    grid-column: span 6;
+  }
+  .ds-cell > .dsc {
+    min-height: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .ds-panel {
+    padding: 28px 16px;
+    border-radius: 20px;
+  }
+  .ds-title {
+    font-size: 26px;
+  }
+  .ds-cell--casual,
+  .ds-cell--formal,
+  .ds-cell--party,
+  .ds-cell--gym {
+    grid-column: span 12;
+  }
+  .ds-cell > .dsc {
+    min-height: 190px;
+  }
+}

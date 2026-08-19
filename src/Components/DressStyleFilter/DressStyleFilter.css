@@ -1,0 +1,36 @@
+.dress-style-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.dress-style-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px 0;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);
+  text-align: left;
+}
+
+.dress-style-item i {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.35);
+}
+
+.dress-style-item:hover {
+  color: #000;
+}
+
+.dress-style-item.active {
+  color: #000;
+  font-weight: 600;
+}
+
+.dress-style-item.active i {
+  color: #000;
+}

@@ -1,0 +1,70 @@
+.color-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.color-swatch {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-swatch-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.color-swatch.light .color-swatch-fill {
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.color-swatch.active {
+  box-shadow: 0 0 0 2px #fff, 0 0 0 3px #000;
+  border-radius: 50%;
+}
+
+.color-swatch-check {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  font-size: 13px;
+}
+
+.color-swatch.light .color-swatch-check {
+  color: #000;
+}
+
+/* Fixed color-name classes matching FILTER_COLORS in product.js */
+.color-fill-black {
+  background: #000000;
+}
+.color-fill-white {
+  background: #ffffff;
+}
+.color-fill-red {
+  background: #ff0000;
+}
+.color-fill-blue {
+  background: #1e4ae9;
+}
+.color-fill-green {
+  background: #22c55e;
+}
+.color-fill-brown {
+  background: #4f4631;
+}
+.color-fill-yellow {
+  background: #ffd400;
+}
+.color-fill-purple {
+  background: #8b15c9;
+}

@@ -1,0 +1,196 @@
+.ft {
+  background: #f0f0f0;
+  padding: 140px 0 30px;
+}
+
+.ft-inner {
+  width: min(1240px, 100% - 32px);
+  margin: 0 auto;
+}
+
+.ft-top {
+  display: flex;
+  gap: 60px;
+  justify-content: space-between;
+}
+
+.ft-brand {
+  max-width: 248px;
+}
+
+.ft-logo {
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.ft-desc {
+  margin: 22px 0 26px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ft-socials {
+  display: flex;
+  gap: 12px;
+}
+
+.ft-socials a {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #000;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  text-decoration: none;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.ft-socials a:hover {
+  background: #000;
+  color: #fff;
+}
+
+.ft-cols {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 1fr));
+  gap: 40px;
+  flex: 1;
+}
+
+.ft-col h3 {
+  margin: 0 0 26px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 3px;
+}
+
+.ft-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 16px;
+}
+
+.ft-col a {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  text-decoration: none;
+}
+
+.ft-col a:hover {
+  color: #000;
+}
+
+.ft-bottom {
+  margin-top: 50px;
+  padding-top: 25px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ft-bottom p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* .ft-pay {
+  display: flex;
+  gap: 12px;
+  font-size: 26px;
+  color: #000;
+}
+
+.ft-pay span {
+  background: #fff;
+  border-radius: 6px;
+  padding: 3px 8px;
+  display: inline-flex;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+} */
+
+.ft-pay {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.ft-pay span {
+  width: 58px;
+  height: 38px;
+  background: #fff;
+  border: 1px solid #e1e1e1;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  box-sizing: border-box;
+}
+
+.ft-pay img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+  .ft {
+    padding: 120px 0 24px;
+  }
+  .ft-top {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .ft-cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+}
+
+@media (max-width: 560px) {
+  .ft-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+  .ft-pay {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 560px) {
+
+  .ft {
+    padding-top: 200px;
+  }
+
+  .ft-top {
+    gap: 35px;
+  }
+
+  .ft-brand {
+    max-width: 100%;
+  }
+
+  .ft-logo {
+    font-size: 28px;
+  }
+
+  .ft-cols {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 20px;
+  }
+}

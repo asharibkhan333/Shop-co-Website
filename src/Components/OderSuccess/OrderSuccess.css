@@ -1,0 +1,107 @@
+.order-success {
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 16px;
+  background: #fff;
+}
+
+.order-success-card {
+  max-width: 460px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 40px 32px;
+}
+
+.order-success-icon {
+  font-size: 48px;
+  color: #16a34a;
+  margin-bottom: 20px;
+}
+
+.order-success-icon.warn {
+  color: #ff9900;
+}
+
+.order-success-card h1 {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 10px;
+  color: #000;
+}
+
+.order-success-card p {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0 0 28px;
+  line-height: 1.6;
+}
+
+.order-success-details {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  text-align: left;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 20px 0;
+  margin-bottom: 28px;
+}
+
+.order-success-details > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order-success-label {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.order-success-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #000;
+}
+
+.order-success-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.order-success-actions button {
+  flex: 1;
+  padding: 14px;
+  border-radius: 62px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: #000;
+  color: #fff;
+  transition: opacity 0.2s ease;
+}
+
+.order-success-actions button:hover {
+  opacity: 0.85;
+}
+
+.order-success-secondary {
+  background: #fff !important;
+  color: #000 !important;
+  border: 1px solid rgba(0, 0, 0, 0.15) !important;
+}
+
+@media (max-width: 480px) {
+  .order-success-card {
+    padding: 28px 20px;
+  }
+
+  .order-success-actions {
+    flex-direction: column;
+  }
+}

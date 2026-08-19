@@ -1,0 +1,142 @@
+.pc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.pc-media {
+  background: #f0eeed;
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 1 / 1;
+}
+
+.pc-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.pc:hover .pc-media img {
+  transform: scale(1.05);
+}
+
+.pc-name {
+  margin: 4px 0 2px;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #000;
+}
+.pc-rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+  font-size: 14px;
+  color: #000;
+}
+
+.pc-stars {
+  color: #ffc633;
+  letter-spacing: 1px;
+  font-size: 13px;
+}
+
+.pc-rating-max,
+.pc-reviews {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.pc-prices {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+
+.pc-price {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.pc-old {
+  font-size: 22px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.3);
+  text-decoration: line-through;
+}
+.pc-badge {
+  background: rgba(255, 51, 51, 0.1);
+  color: #ff3333;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 62px;
+}
+
+.pc-link {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-link {
+  /* display: block;
+  color: inherit;
+  text-decoration: none !important; */
+   display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.product-link:hover,
+.product-link:visited,
+.product-link:active,
+.product-link:focus {
+  color: inherit;
+  text-decoration: none !important;
+}
+
+.product-link h3,
+.product-link span,
+.product-link i {
+  text-decoration: none !important;
+}
+
+@media (max-width: 900px) {
+  .pc-media {
+    border-radius: 14px;
+  }
+  .pc-name {
+    font-size: 16px;
+  }
+  .pc-price,
+  .pc-old {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 560px) {
+  .pc-name {
+    font-size: 15px;
+  }
+  .pc-price,
+  .pc-old {
+    font-size: 16px;
+  }
+  .pc-badge {
+    font-size: 10px;
+    padding: 4px 9px;
+  }
+  .pc-rating {
+    font-size: 12px;
+  }
+}

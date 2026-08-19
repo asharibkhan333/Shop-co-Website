@@ -1,0 +1,170 @@
+.hc {
+  padding: 80px 0 60px;
+}
+
+.hc-inner {
+  width: min(1240px, 100% - 32px);
+  margin: 0 auto;
+}
+
+.hc-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.hc-title {
+  text-align: left;
+  margin: 0;
+}
+
+.hc-nav {
+  display: flex;
+  gap: 20px;
+  padding-bottom: 6px;
+}
+
+.hc-nav button {
+  border: none;
+  background: transparent;
+  font-size: 22px;
+  color: #000;
+  cursor: pointer;
+  padding: 4px;
+  transition: opacity 0.2s ease;
+}
+
+.hc-nav button:hover {
+  opacity: 0.55;
+}
+
+.hc-viewport {
+  overflow: hidden;
+}
+
+.hc-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hc-slide {
+  flex: 0 0 auto;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+/* Responsive */
+
+@media (max-width: 1024px) {
+
+  .hc {
+    padding: 65px 0 50px;
+  }
+
+  .hc-inner {
+    width: min(92%, 100% - 30px);
+  }
+
+  .hc-head {
+    margin-bottom: 30px;
+  }
+
+  .hc-nav {
+    gap: 14px;
+  }
+
+  .hc-nav button {
+    font-size: 20px;
+  }
+
+  .hc-slide {
+    padding-right: 15px;
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .hc {
+    padding: 50px 0 40px;
+  }
+
+  .hc-inner {
+    width: calc(100% - 32px);
+  }
+
+  .hc-head {
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 10px;
+  }
+
+  .hc-title {
+    font-size: 28px;
+    line-height: 1.1;
+  }
+
+  .hc-nav {
+    gap: 8px;
+    padding-bottom: 0;
+  }
+
+  .hc-nav button {
+    font-size: 19px;
+    padding: 3px;
+  }
+
+  .hc-viewport {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .hc-track {
+    width: 100%;
+  }
+
+  .hc-slide {
+    flex: 0 0 100%;
+    width: 100%;
+    padding-right: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hc {
+    padding: 40px 0 30px;
+  }
+
+  .hc-inner {
+    width: calc(100% - 24px);
+  }
+
+  .hc-head {
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .hc-title {
+    font-size: 24px;
+  }
+
+  .hc-nav {
+    gap: 5px;
+  }
+
+  .hc-nav button {
+    font-size: 17px;
+    padding: 2px;
+  }
+
+  .hc-slide {
+    padding-right: 8px;
+  }
+}

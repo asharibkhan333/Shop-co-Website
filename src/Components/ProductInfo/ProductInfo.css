@@ -1,0 +1,80 @@
+.pi-name {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.pi-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+  font-size: 14px;
+}
+
+.pi-stars {
+  color: #ffc633;
+  letter-spacing: 2px;
+  font-size: 16px;
+}
+
+.pi-rating-max,
+.pi-reviews {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.pi-prices {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.pi-price {
+  font-size: 32px;
+  font-weight: 700;
+}
+
+.pi-old {
+  font-size: 32px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.3);
+  text-decoration: line-through;
+}
+
+.pi-badge {
+  background: rgba(255, 51, 51, 0.1);
+  color: #ff3333;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 62px;
+}
+
+.pi-summary {
+  margin: 20px 0 0;
+  font-size: 16px;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+@media (max-width: 900px) {
+  .pi-name {
+    font-size: 24px;
+  }
+  .pi-price,
+  .pi-old {
+    font-size: 24px;
+  }
+  .pi-badge {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+  .pi-summary {
+    font-size: 14px;
+  }
+}

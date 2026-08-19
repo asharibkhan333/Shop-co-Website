@@ -1,0 +1,38 @@
+.qs {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: #f0f0f0;
+  border-radius: 62px;
+  padding: 14px 20px;
+  min-width: 170px;
+}
+
+.qs-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 16px;
+  color: #000;
+  padding: 4px 6px;
+  display: inline-flex;
+}
+
+.qs-value {
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 20px;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .qs {
+    padding: 11px 16px;
+    min-width: 110px;
+  }
+  .qs-btn,
+  .qs-value {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,41 @@
+.ts {
+  padding: 50px 0 20px;
+}
+
+.ts-inner {
+  width: min(1240px, 100% - 32px);
+  margin: 0 auto;
+}
+
+.ts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-top: 55px;
+}
+
+.ts-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
+}
+
+@media (max-width: 1024px) {
+  .ts-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 560px) {
+  .ts {
+    padding: 24px 0 8px;
+  }
+  .ts-grid {
+    margin-top: 28px;
+    gap: 12px;
+  }
+  .ts-actions {
+    margin-top: 24px;
+  }
+}

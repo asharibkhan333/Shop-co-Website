@@ -1,0 +1,45 @@
+.ss-label {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ss-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.ss-btn {
+  border: none;
+  background: #f0f0f0;
+  color: rgba(0, 0, 0, 0.6);
+  border-radius: 62px;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-family: inherit;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.ss-btn:hover {
+  background: #e6e6e6;
+}
+
+.ss-btn.is-active {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 900px) {
+  .ss-label {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  .ss-btn {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+}
