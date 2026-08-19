@@ -1,10 +1,10 @@
 import "./BrandLogos.css";
 
-import versace from "../../assets/logos/logo-1-png.png";
-import zara from "../../assets/logos/logo-2-png.png";
-import gucci from "../../assets/logos/logo-3-png.png";
-import prada from "../../assets/logos/logo-4-png.png";
-import calvinKlein from "../../assets/logos/logo-5-png.png";
+import versace from "../../assets/Logos/logo-1-png.png";
+import zara from "../../assets/Logos/logo-2-png.png";
+import gucci from "../../assets/Logos/logo-3-png.png";
+import prada from "../../assets/Logos/logo-4-png.png";
+import calvinKlein from "../../assets/Logos/logo-5-png.png";
 
 function BrandLogos() {
   const logos = [

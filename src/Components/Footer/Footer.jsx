@@ -1,5 +1,5 @@
-import visa from "../../assets/Footer-pic/visa.png";
-import mastercard from "../../assets/Footer-pic/mastercard.png";
+import visa from "../../assets/Footer-pic/Visa.png";
+import mastercard from "../../assets/Footer-pic/Mastercard.png";
 import paypal from "../../assets/Footer-pic/paypal.png";
 import applepay from "../../assets/Footer-pic/pay.png";
 import googlepay from "../../assets/Footer-pic/G-pay.png";

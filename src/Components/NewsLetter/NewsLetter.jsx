@@ -1,6 +1,5 @@
 import { useState } from "react";
-import "./Newsletter.css";
-
+import "./NewsLetter.css";
 export default function Newsletter() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
