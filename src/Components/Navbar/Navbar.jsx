@@ -1,396 +1,182 @@
-
-// import { useState } from "react";
-// import "./Navbar.css";
-
-// function Navbar() {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-//   const closeMenu = () => {
-//     setIsMenuOpen(false);
-//   };
-
-//   return (
-//     <>
-//       <header className="navbar">
-//         <div className="nav-container">
-
-//           {/* Mobile Menu Icon */}
-//           <button
-//             className="menu-btn"
-//             onClick={() => setIsMenuOpen(true)}
-//           >
-//             <i className="fa-solid fa-bars"></i>
-//           </button>
-
-//           {/* Logo */}
-//           <div className="logo">
-//             SHOP.CO
-//           </div>
-
-//           {/* Desktop Navigation */}
-//           <nav className="desktop-nav">
-//             <a href="#shop">
-//               Shop <i className="fa-solid fa-chevron-down"></i>
-//             </a>
-
-//             <a href="#sale">On Sale</a>
-//             <a href="#new-arrivals">New Arrivals</a>
-//             <a href="#brands">Brands</a>
-//           </nav>
-
-//           {/* Search */}
-//           <div className="search-box">
-//             <i className="fa-solid fa-magnifying-glass"></i>
-
-//             <input
-//               type="text"
-//               placeholder="Search for products..."
-//             />
-//           </div>
-
-//           {/* Right Icons */}
-//           <div className="nav-icons">
-//             <button>
-//               <i className="fa-solid fa-cart-shopping"></i>
-//             </button>
-
-//             <button className="user-icon">
-//               <i className="fa-regular fa-circle-user"></i>
-//             </button>
-//           </div>
-//         </div>
-//       </header>
-
-//       {/* Overlay */}
-//       <div
-//         className={`menu-overlay ${isMenuOpen ? "active" : ""}`}
-//         onClick={closeMenu}
-//       ></div>
-
-//       {/* Mobile Sidebar */}
-//       <aside className={`mobile-sidebar ${isMenuOpen ? "open" : ""}`}>
-
-//         <div className="sidebar-header">
-//           <h2>SHOP.CO</h2>
-
-//           <button onClick={closeMenu}>
-//             <i className="fa-solid fa-xmark"></i>
-//           </button>
-//         </div>
-
-//         <nav className="mobile-nav">
-//           <a href="#home" onClick={closeMenu}>
-//             Home
-//           </a>
-
-//           <a href="#shop" onClick={closeMenu}>
-//             Shop
-//           </a>
-
-//           <a href="#sale" onClick={closeMenu}>
-//             On Sale
-//           </a>
-
-//           <a href="#new-arrivals" onClick={closeMenu}>
-//             New Arrivals
-//           </a>
-
-//           <a href="#brands" onClick={closeMenu}>
-//             Brands
-//           </a>
-
-//           <a href="#cart" onClick={closeMenu}>
-//             <i className="fa-solid fa-cart-shopping"></i>
-//             Cart
-//           </a>
-//         </nav>
-
-//       </aside>
-//     </>
-//   );
-// }
-
-// export default Navbar;
-
-// import { useState } from "react";
-// import { Link } from "react-router-dom";
-// import "./Navbar.css";
-// import { useCart } from "../lib/cart";
-
-// function Navbar() {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-//   const closeMenu = () => {
-//     setIsMenuOpen(false);
-//   };
-
-//   return (
-//     <>
-//       <header className="navbar">
-//         <div className="nav-container">
-
-//           {/* Mobile Menu Icon */}
-//           <button
-//             className="menu-btn"
-//             onClick={() => setIsMenuOpen(true)}
-//           >
-//             <i className="fa-solid fa-bars"></i>
-//           </button>
-
-//           {/* Logo */}
-//           <Link to="/" className="logo">
-//             SHOP.CO
-//           </Link>
-
-//           {/* Desktop Navigation */}
-//           <nav className="desktop-nav">
-
-//             {/* SHOP → CATEGORY PAGE */}
-//             <Link to="/category">
-//               Shop <i className="fa-solid fa-chevron-down"></i>
-//             </Link>
-
-//             <a href="#sale">On Sale</a>
-
-//             <a href="#new-arrivals">
-//               New Arrivals
-//             </a>
-
-//             <a href="#brands">
-//               Brands
-//             </a>
-
-//           </nav>
-
-//           {/* Search */}
-//           <div className="search-box">
-//             <i className="fa-solid fa-magnifying-glass"></i>
-
-//             <input
-//               type="text"
-//               placeholder="Search for products..."
-//             />
-//           </div>
-
-//           {/* Right Icons */}
-//           <div className="nav-icons">
-
-//             {/* CART PAGE */}
-//             <Link to="/cart">
-//               <i className="fa-solid fa-cart-shopping"></i>
-//             </Link>
-
-//             <button className="user-icon">
-//               <i className="fa-regular fa-circle-user"></i>
-//             </button>
-
-//           </div>
-//         </div>
-//       </header>
-
-//       {/* Overlay */}
-//       <div
-//         className={`menu-overlay ${isMenuOpen ? "active" : ""}`}
-//         onClick={closeMenu}
-//       ></div>
-
-//       {/* Mobile Sidebar */}
-//       <aside
-//         className={`mobile-sidebar ${
-//           isMenuOpen ? "open" : ""
-//         }`}
-//       >
-
-//         <div className="sidebar-header">
-//           <h2>SHOP.CO</h2>
-
-//           <button onClick={closeMenu}>
-//             <i className="fa-solid fa-xmark"></i>
-//           </button>
-//         </div>
-
-//         <nav className="mobile-nav">
-
-//           <Link to="/" onClick={closeMenu}>
-//             Home
-//           </Link>
-
-//           {/* SHOP → CATEGORY PAGE */}
-//           <Link to="/category" onClick={closeMenu}>
-//             Shop
-//           </Link>
-
-//           <a href="#sale" onClick={closeMenu}>
-//             On Sale
-//           </a>
-
-//           <a href="#new-arrivals" onClick={closeMenu}>
-//             New Arrivals
-//           </a>
-
-//           <a href="#brands" onClick={closeMenu}>
-//             Brands
-//           </a>
-
-//           {/* CART PAGE */}
-//           <Link to="/cart" onClick={closeMenu}>
-//             <i className="fa-solid fa-cart-shopping"></i>
-//             Cart
-//           </Link>
-
-//         </nav>
-//       </aside>
-//     </>
-//   );
-// }
-
-// export default Navbar;
-
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "./Navbar.css";
-import { useCart } from "../lib/cart";
+import { useCart } from "../Content/CartContent.jsx";
+import { getCurrentUser, logoutUser } from "../../Components/lib/auth.js";
 
 function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [user, setUser] = useState(() => getCurrentUser());
 
-  // Cart se total quantity
-  const { count } = useCart();
+  const { cartCount, clearCart } = useCart();
+  const navigate = useNavigate();
 
-  const closeMenu = () => {
+  useEffect(() => {
+    const updateUser = () => setUser(getCurrentUser());
+
+    window.addEventListener("authChanged", updateUser);
+    window.addEventListener("storage", updateUser);
+
+    return () => {
+      window.removeEventListener("authChanged", updateUser);
+      window.removeEventListener("storage", updateUser);
+    };
+  }, []);
+
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const handleLogout = () => {
+    logoutUser();
+    clearCart();
+
+    setUser(null);
+    setIsUserMenuOpen(false);
     setIsMenuOpen(false);
+
+    navigate("/login", { replace: true });
   };
+
+  const userName = user?.name || user?.firstName || "My Account";
 
   return (
     <>
       <header className="navbar">
         <div className="nav-container">
-
-          {/* Mobile Menu Icon */}
           <button
             className="menu-btn"
             onClick={() => setIsMenuOpen(true)}
+            aria-label="Open menu"
           >
             <i className="fa-solid fa-bars"></i>
           </button>
 
-          {/* Logo */}
-          <Link to="/" className="logo">
-            SHOP.CO
-          </Link>
+          <Link to="/" className="logo">SHOP.CO</Link>
 
-          {/* Desktop Navigation */}
           <nav className="desktop-nav">
-
-            {/* SHOP → CATEGORY PAGE */}
             <Link to="/category">
               Shop <i className="fa-solid fa-chevron-down"></i>
             </Link>
-
-            <a href="#sale">
-              On Sale
-            </a>
-
-            <a href="#new-arrivals">
-              New Arrivals
-            </a>
-
-            <a href="#brands">
-              Brands
-            </a>
-
+            <a href="#sale">On Sale</a>
+            <a href="#new-arrivals">New Arrivals</a>
+            <a href="#brands">Brands</a>
           </nav>
 
-          {/* Search */}
           <div className="search-box">
             <i className="fa-solid fa-magnifying-glass"></i>
-
-            <input
-              type="text"
-              placeholder="Search for products..."
-            />
+            <input type="text" placeholder="Search for products..." />
           </div>
 
-          {/* Right Icons */}
           <div className="nav-icons">
-
-            {/* CART PAGE */}
             <Link to="/cart" className="cart-link">
               <i className="fa-solid fa-cart-shopping"></i>
-
-              {/* Cart Count */}
-              {count > 0 && (
-                <span className="cart-count">
-                  {count}
-                </span>
+              {cartCount > 0 && (
+                <span className="cart-count">{cartCount}</span>
               )}
             </Link>
 
-            <button className="user-icon">
-              <i className="fa-regular fa-circle-user"></i>
-            </button>
+            <div className="user-menu-wrapper">
+              <button
+                className={`user-icon ${user ? "logged-in-user" : ""}`}
+                onClick={() => setIsUserMenuOpen((prev) => !prev)}
+                aria-label="User account menu"
+              >
+                {user?.avatar ? (
+                  <img
+                    src={user.avatar}
+                    alt="Profile"
+                    className="navbar-avatar"
+                  />
+                ) : (
+                  <i className="fa-regular fa-circle-user"></i>
+                )}
 
+                {user && (
+                  <span className="navbar-user-name">{userName}</span>
+                )}
+              </button>
+
+              {isUserMenuOpen && (
+                <div className="user-dropdown">
+                  {user ? (
+                    <>
+                      <Link to="/my-account" onClick={() => setIsUserMenuOpen(false)}>
+                        <i className="fa-regular fa-user"></i>
+                        My Account
+                      </Link>
+
+                      <Link to="/my-orders" onClick={() => setIsUserMenuOpen(false)}>
+                        <i className="fa-solid fa-box"></i>
+                        My Orders
+                      </Link>
+
+                      <button onClick={handleLogout}>
+                        <i className="fa-solid fa-right-from-bracket"></i>
+                        Logout
+                      </button>
+                    </>
+                  ) : (
+                    <>
+                      <Link to="/login" onClick={() => setIsUserMenuOpen(false)}>
+                        <i className="fa-solid fa-right-to-bracket"></i>
+                        Login
+                      </Link>
+                      <Link to="/signup" onClick={() => setIsUserMenuOpen(false)}>
+                        <i className="fa-solid fa-user-plus"></i>
+                        Create Account
+                      </Link>
+                    </>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Overlay */}
       <div
-        className={`menu-overlay ${
-          isMenuOpen ? "active" : ""
-        }`}
+        className={`menu-overlay ${isMenuOpen ? "active" : ""}`}
         onClick={closeMenu}
       ></div>
 
-      {/* Mobile Sidebar */}
-      <aside
-        className={`mobile-sidebar ${
-          isMenuOpen ? "open" : ""
-        }`}
-      >
+      <aside className={`mobile-sidebar ${isMenuOpen ? "open" : ""}`}>
         <div className="sidebar-header">
           <h2>SHOP.CO</h2>
-
-          <button onClick={closeMenu}>
+          <button onClick={closeMenu} aria-label="Close menu">
             <i className="fa-solid fa-xmark"></i>
           </button>
         </div>
 
         <nav className="mobile-nav">
+          <Link to="/" onClick={closeMenu}>Home</Link>
+          <Link to="/category" onClick={closeMenu}>Shop</Link>
+          <a href="#sale" onClick={closeMenu}>On Sale</a>
+          <a href="#new-arrivals" onClick={closeMenu}>New Arrivals</a>
+          <a href="#brands" onClick={closeMenu}>Brands</a>
 
-          <Link to="/" onClick={closeMenu}>
-            Home
-          </Link>
-
-          <Link to="/category" onClick={closeMenu}>
-            Shop
-          </Link>
-
-          <a href="#sale" onClick={closeMenu}>
-            On Sale
-          </a>
-
-          <a href="#new-arrivals" onClick={closeMenu}>
-            New Arrivals
-          </a>
-
-          <a href="#brands" onClick={closeMenu}>
-            Brands
-          </a>
-
-          {/* CART PAGE */}
           <Link to="/cart" onClick={closeMenu}>
             <i className="fa-solid fa-cart-shopping"></i>
-
-            Cart
-
-            {count > 0 && (
-              <span className="mobile-cart-count">
-                ({count})
-              </span>
-            )}
+            Cart {cartCount > 0 && `(${cartCount})`}
           </Link>
 
+          {user ? (
+            <>
+              <Link to="/my-account" onClick={closeMenu}>
+                <i className="fa-regular fa-user"></i> My Account
+              </Link>
+              <Link to="/my-orders" onClick={closeMenu}>
+                <i className="fa-solid fa-box"></i> My Orders
+              </Link>
+              <button className="mobile-logout" onClick={handleLogout}>
+                <i className="fa-solid fa-right-from-bracket"></i> Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login" onClick={closeMenu}>Login</Link>
+              <Link to="/signup" onClick={closeMenu}>Create Account</Link>
+            </>
+          )}
         </nav>
       </aside>
     </>

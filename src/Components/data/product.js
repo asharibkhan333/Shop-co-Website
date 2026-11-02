@@ -12,16 +12,7 @@ import p11 from "../../assets/Arrivals/T-3-png.png";
 
 export const COLORS = ["#4F4631", "#314F4A", "#31344F"];
 export const SIZES = ["Small", "Medium", "Large", "X-Large"];
-
-/* ==================================================
-   CATEGORY PAGE CONSTANTS
-   These power CategorySidebar / ColorFilter / SizeFilter /
-   DressStyleFilter. Keep the hex values below IN SYNC with
-   the `color` field used on each product further down,
-   otherwise the color filter will silently match nothing.
-================================================== */
 export const CATEGORIES = ["T-Shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
-
 export const DRESS_STYLES = ["Casual", "Formal", "Party", "Gym"];
 
 export const FILTER_COLORS = [

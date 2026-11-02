@@ -5,13 +5,14 @@ import {
   useMemo,
   useState,
 } from "react";
+
 import {
   getCart,
   addToCart as addToCartStorage,
   removeFromCart as removeFromCartStorage,
   updateCartQuantity as updateCartQuantityStorage,
   clearCart as clearCartStorage,
-} from "../Components/lib/cart";
+} from "../lib/cart";
 
 const CartContext = createContext(null);
 

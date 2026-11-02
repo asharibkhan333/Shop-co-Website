@@ -8,8 +8,8 @@ import CheckoutForm from "../Components/CheckoutForm/CheckoutForm";
 import PaymentMethod from "../Components/PaymentMethod/PaymentMethod";
 import CheckoutOrderSummary from "../Components/CheckoutOrderSummary/CheckoutOrderSummary";
 import CartEmpty from "../Components/CartEmptycheck/CartEmptyCheck.jsx";
-import { useCart } from "../Components/lib/cart";
-import { saveOrder, generateOrderId } from "../libs/Checkout.js";
+import { useCart } from "../Components/Content/CartContent.jsx";
+// import { saveOrder, generateOrderId } from "../libs/Checkout.js";
 import "./Checkout.css";
 import Newsletter from "../Components/NewsLetter/NewsLetter.jsx";
 
@@ -86,6 +86,9 @@ function Checkout() {
   const [formData, setFormData] = useState(INITIAL_FORM);
   const [errors, setErrors] = useState({});
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -99,53 +102,122 @@ function Checkout() {
     }
   };
 
-  const handlePlaceOrder = () => {
-    if (cart.length === 0) return;
+  
+  const handlePlaceOrder = async () => {
+  if (cart.length === 0 || isSubmitting) return;
 
-    const validationErrors = validateForm(formData);
+  const validationErrors = validateForm(formData);
 
-    if (Object.keys(validationErrors).length > 0) {
-      setErrors(validationErrors);
-      const firstErrorField = document.getElementsByName(
-        Object.keys(validationErrors)[0]
-      )[0];
-      firstErrorField?.scrollIntoView({ behavior: "smooth", block: "center" });
+  if (Object.keys(validationErrors).length > 0) {
+    setErrors(validationErrors);
+
+    const firstErrorField = document.getElementsByName(
+      Object.keys(validationErrors)[0]
+    )[0];
+
+    firstErrorField?.scrollIntoView({
+      behavior: "smooth",
+      block: "center",
+    });
+
+    return;
+  }
+
+  setIsSubmitting(true);
+  setSubmitError("");
+
+  try {
+    // User ka login token
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      setSubmitError(
+        "Please login before placing your order."
+      );
       return;
     }
 
-    const discount = subtotal * DISCOUNT_RATE;
-    const deliveryFee = subtotal > 500 ? 0 : 15;
-    const total = subtotal - discount + deliveryFee;
+    // Frontend cart ko backend ke required format mein convert karo
+    const orderData = {
+      items: cart.map((item) => ({
+        productId: String(item.id),
+        quantity: Number(item.quantity),
+        color: item.color,
+        size: item.size,
+      })),
 
-    const order = {
-      id: generateOrderId(),
-      createdAt: new Date().toISOString(),
-      customer: {
-        firstName: formData.firstName,
-        lastName: formData.lastName,
-        email: formData.email,
-        phone: formData.phone,
-      },
       shippingAddress: {
-        country: formData.country,
-        city: formData.city,
-        address: formData.address,
-        apartment: formData.apartment,
-        postalCode: formData.postalCode,
+        fullName: `${formData.firstName} ${formData.lastName}`.trim(),
+        phone: formData.phone.trim(),
+
+        address: [
+          formData.address,
+          formData.apartment,
+          formData.city,
+          formData.country,
+          formData.postalCode,
+        ]
+          .filter(Boolean)
+          .join(", "),
       },
-      paymentMethod: formData.paymentMethod,
-      items: cart,
-      subtotal,
-      discount,
-      deliveryFee,
-      total,
-      status: "Confirmed",
     };
 
-    saveOrder(order);
+    const response = await fetch(
+      "http://localhost:4000/api/orders",
+      {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+
+        body: JSON.stringify(orderData),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.message ||
+          data.error ||
+          "Order place nahi ho saka."
+      );
+    }
+
+    // Backend se returned order
+    const savedOrder = data.order || data;
+
+    // Sirf successful response par cart clear karo
     clearCart();
-    navigate("/order-success", { state: { order } });
-  };
+
+    // Success page par database wala order bhejo
+    navigate("/order-success", {
+      state: {
+        order: {
+          ...savedOrder,
+          customer: {
+            firstName: formData.firstName,
+            lastName: formData.lastName,
+            email: formData.email,
+            phone: formData.phone,
+          },
+          paymentMethod: formData.paymentMethod,
+        },
+      },
+    });
+  } catch (error) {
+    console.error("Place order error:", error);
+
+    setSubmitError(
+      error.message ||
+        "Server se connection nahi ho saka. Dobara try karo."
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
   if (cart.length === 0) {
     return (
@@ -184,13 +256,21 @@ function Checkout() {
                 onChange={handleChange}
               />
 
-              <button
-                type="button"
-                className="place-order-btn"
-                onClick={handlePlaceOrder}
-              >
-                Place Order
-              </button>
+            {submitError && (
+            <p role="alert" className="checkout-error">
+    {submitError}
+  </p>
+)}
+
+         <button
+        type="button"
+        className="place-order-btn"
+        onClick={handlePlaceOrder}
+        disabled={isSubmitting}
+>
+  {isSubmitting ? "Placing Order..." : "Place Order"}
+</button>
+
             </div>
 
             <div className="checkout-right">

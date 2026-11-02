@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
 import Navbar from "../Components/Navbar/Navbar.jsx";
@@ -11,129 +11,62 @@ import QuantitySelector from "../Components/QuantitySelector/QuantitySelector.js
 import ProductTabs from "../Components/ProductTabs/ProductTabs.jsx";
 
 import { addToCart } from "../Components/lib/cart.js";
-import { getProductById } from "../Components/data/product.js";
+import { getProductById } from ".././Components/lib/api.js";
+import { getProductImage } from ".././Components/lib/productImages.js";
 
 import NewArrivals from "../Components/NewArrivals/NewArrivals.jsx";
+import Newsletter from "../Components/NewsLetter/NewsLetter.jsx";
 
 import "./ProductDetails.css";
 
-// YOU MIGHT ALSO LIKE images
-import related1 from "../assets/Arrivals/product-9-png.png";
-import related2 from "../assets/Arrivals/product-10-png.png";
-import related3 from "../assets/Arrivals/product-11-png.png";
-import related4 from "../assets/Arrivals/product-12-png.png";
-import related5 from "../assets/Arrivals/product-7-jpg.jpg";
-import related6 from "../assets/Arrivals/product-1-png.png";
-import related7 from "../assets/Arrivals/T-4-png.png";
-import related8 from "../assets/Arrivals/product-5-jpg.jpg";
-import Newsletter from "../Components/NewsLetter/NewsLetter.jsx";
-
-// Related products
-const relatedProductSets = [
-  [
-    {
-      id: 101,
-      image: related1,
-      name: "Polo with Contrast Trims",
-      rating: 4,
-      reviews: 120,
-      price: 212,
-      oldPrice: 242,
-      discount: 20,
-    },
-    {
-      id: 102,
-      image: related2,
-      name: "Gradient Graphic T-shirt",
-      rating: 3.5,
-      reviews: 85,
-      price: 145,
-    },
-    {
-      id: 103,
-      image: related3,
-      name: "Polo with Tipping Details",
-      rating: 4.5,
-      reviews: 98,
-      price: 180,
-    },
-    {
-      id: 104,
-      image: related4,
-      name: "Black Striped T-shirt",
-      rating: 5,
-      reviews: 150,
-      price: 120,
-      oldPrice: 150,
-      discount: 30,
-    },
-  ],
-
- [
-  {
-    id: 105,
-    image: related5,
-    name: "Casual Shirt",
-    rating: 4,
-    reviews: 90,
-    price: 160,
-  },
-  {
-    id: 106,
-    image: related6,
-    name: "Classic Polo",
-    rating: 4.5,
-    reviews: 110,
-    price: 190,
-  },
-  {
-    id: 107,
-    image: related7,
-    name: "Slim Fit T-shirt",
-    rating: 4,
-    reviews: 75,
-    price: 150,
-    oldPrice: 180,
-    discount: 20,
-  },
-  {
-    id: 108,
-    image: related8,
-    name: "Classic Casual Shirt",
-    rating: 5,
-    reviews: 130,
-    price: 130,
-  },
-],
-];
-
+// Main Product Details Page
 export default function ProductDetails() {
   const { id } = useParams();
 
-  // product.js se product find karega
-  const product = getProductById(id);
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  // Agar product nahi mila
-  if (!product) {
+  useEffect(() => {
+    let active = true;
+
+    async function loadProduct() {
+      try {
+        setLoading(true);
+        setError("");
+
+        const data = await getProductById(id);
+
+        if (active) {
+          setProduct(data);
+        }
+      } catch (err) {
+        if (active) {
+          setError(err.message || "Product load nahi ho saka.");
+          setProduct(null);
+        }
+      } finally {
+        if (active) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadProduct();
+
+    return () => {
+      active = false;
+    };
+  }, [id]);
+
+  // Loading State
+  if (loading) {
     return (
       <>
         <Navbar />
 
-        <main
-          style={{
-            minHeight: "60vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: "20px",
-          }}
-        >
-          <h1>Product Not Found</h1>
-
-          <Link to="/">Go Back Home</Link>
-
-          <NewArrivals />
+        <main className="pdp">
+          <h2>Loading product...</h2>
         </main>
 
         <Footer />
@@ -141,21 +74,86 @@ export default function ProductDetails() {
     );
   }
 
-  return <ProductDetailsContent product={product} />;
+  // Error / Product Not Found
+  if (error || !product) {
+    return (
+      <>
+        <Navbar />
+
+        <main className="pdp">
+          <h1>Product Not Found</h1>
+
+          <p>{error || "This product does not exist."}</p>
+
+          <Link to="/">Go Back Home</Link>
+        </main>
+
+        <Footer />
+      </>
+    );
+  }
+
+  return (
+    <ProductDetailsContent
+      key={product._id}
+      product={product}
+    />
+  );
 }
 
-// Product ka actual UI
+// Product Details Content
 function ProductDetailsContent({ product }) {
-  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
-  const [selectedSize, setSelectedSize] = useState("Large");
+  // Available Colors
+  const availableColors = product.colors?.length
+    ? product.colors
+    : product.color
+      ? [product.color]
+      : [];
+
+  // Available Sizes
+  const availableSizes = product.sizes?.length
+    ? product.sizes
+    : ["Small", "Medium", "Large", "X-Large"];
+
+  // Selected Options
+  const [selectedColor, setSelectedColor] = useState(
+    availableColors[0] || ""
+  );
+
+  const [selectedSize, setSelectedSize] = useState(
+    availableSizes.includes("Large")
+      ? "Large"
+      : availableSizes[0]
+  );
+
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
 
-  const images = product.imagesByColor[selectedColor] ?? [product.image];
+  // Selected Color Images
+  const imagePaths =
+    product.imagesByColor?.[selectedColor] ||
+    product.gallery ||
+    [product.image];
 
+  // Convert Database Image Paths into Local Assets
+  const images = imagePaths
+    .map((path) => getProductImage(path))
+    .filter(Boolean);
+
+  // Add Product to Cart
   const handleAddToCart = () => {
+    if (!product._id) {
+      console.error("Product MongoDB ID missing");
+      return;
+    }
+
+    if (images.length === 0) {
+      console.error("Product image not found");
+      return;
+    }
+
     addToCart({
-      id: product.id,
+      id: product._id,
       image: images[0],
       name: product.name,
       price: product.price,
@@ -176,21 +174,31 @@ function ProductDetailsContent({ product }) {
       <Navbar />
 
       <main className="pdp">
+
         {/* Breadcrumb */}
 
         <nav className="pdp-crumbs" aria-label="Breadcrumb">
           <Link to="/">Home</Link>
+
           <i className="fa-solid fa-chevron-right"></i>
+
           <span>Shop</span>
+
           <i className="fa-solid fa-chevron-right"></i>
+
           <span>Men</span>
+
           <i className="fa-solid fa-chevron-right"></i>
-          <span className="is-current">{product.name}</span>
+
+          <span className="is-current">
+            {product.name}
+          </span>
         </nav>
 
-        {/* Product */}
+        {/* Product Information */}
 
         <div className="pdp-grid">
+
           <ProductGallery
             key={selectedColor}
             images={images}
@@ -198,10 +206,11 @@ function ProductDetailsContent({ product }) {
           />
 
           <div className="pdp-info">
+
             <ProductInfo
               name={product.name}
-              rating={product.rating}
-              reviews={product.reviews_count}
+              rating={product.rating ?? 0}
+              reviews={product.reviews_count ?? 0}
               price={product.price}
               oldPrice={product.oldPrice}
               discount={product.discount}
@@ -210,54 +219,70 @@ function ProductDetailsContent({ product }) {
 
             <hr className="pdp-divider" />
 
+            {/* Color Selection */}
+
             <ColorSelector
-              colors={product.colors}
+              colors={availableColors}
               selectedColor={selectedColor}
               setSelectedColor={setSelectedColor}
             />
 
             <hr className="pdp-divider" />
 
+            {/* Size Selection */}
+
             <SizeSelector
-              sizes={product.sizes}
+              sizes={availableSizes}
               selectedSize={selectedSize}
               setSelectedSize={setSelectedSize}
             />
 
             <hr className="pdp-divider" />
 
+            {/* Quantity and Add to Cart */}
+
             <div className="pdp-actions">
-              <QuantitySelector quantity={quantity} setQuantity={setQuantity} />
+
+              <QuantitySelector
+                quantity={quantity}
+                setQuantity={setQuantity}
+              />
 
               <button
                 type="button"
                 className="pdp-cart-btn"
                 onClick={handleAddToCart}
+                disabled={images.length === 0}
               >
                 {added ? "Added to Cart" : "Add to Cart"}
               </button>
+
             </div>
+
           </div>
+
         </div>
 
-        {/* Product Tabs */}
+        {/* Description, Reviews and FAQs */}
 
         <ProductTabs
           description={product.description}
-          rating={product.rating}
-          reviews={product.reviews}
-          faqs={product.faqs}
+          rating={product.rating ?? 0}
+          reviews={product.reviews || []}
+          faqs={product.faqs || []}
         />
+
       </main>
 
-      {/* YOU MIGHT ALSO LIKE */}
+      {/* You Might Also Like */}
 
       <NewArrivals
         title="YOU MIGHT ALSO LIKE"
-        products={relatedProductSets}
         showViewAll={true}
       />
+
       <Newsletter />
+
       <Footer />
     </div>
   );
