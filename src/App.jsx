@@ -8,7 +8,7 @@ import Login from "./Pages/Login.jsx";
 import Signup from "./Pages/Signup.jsx";
 import Checkout from "./Pages/Checkout.jsx";
 import OrderSuccess from "./Components/OderSuccess/OrderSuccess.jsx";
-import MyOrders from "./Pages/myOrder.jsx";
+import MyOrders from "./Pages/MyOrder.jsx";
 
 // Cart Context
 import { CartProvider } from "./Components/Content/CartContent.jsx";
