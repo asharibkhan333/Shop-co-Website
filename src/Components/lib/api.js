@@ -1,5 +1,5 @@
 const API_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:4000/api";
+  import.meta.env.VITE_API_URL || "https://shopco-backend-virid.vercel.app/api";
 
 // Get all products
 export async function getProducts() {

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:4000/api";
+const API_URL = "https://shopco-backend-virid.vercel.app/api";
 
 export async function signupUser(userData) {
   const isFormData = userData instanceof FormData;
