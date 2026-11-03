@@ -162,19 +162,20 @@ function Checkout() {
       },
     };
 
-    const response = await fetch(
-      "http://localhost:4000/api/orders",
-      {
-        method: "POST",
+    const API_URL =
+  import.meta.env.VITE_API_URL ||
+  "https://shopco-backend-virid.vercel.app/api";
 
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
+const response = await fetch(`${API_URL}/orders`, {
+  method: "POST",
 
-        body: JSON.stringify(orderData),
-      }
-    );
+  headers: {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  },
+
+  body: JSON.stringify(orderData),
+});
 
     const data = await response.json();
 
